@@ -1,0 +1,26 @@
+{% extends 'base_template.html' %}
+
+<!-- Head, inherits from base_template.html-->
+{% block head %}
+<title>Question Tracker</title>
+{% endblock %}
+
+<!-- Body, inherits from base_template.html-->
+{% block body %}
+<div class = "content">
+
+    <h1 style="text-align: center">Update a Question.</h1>
+
+
+    <form action = "/update/{{question.id}}" method="POST">
+
+        <input type = "text" name = "content" id = "content" value = "{{question.content}}">
+        <input type = "submit" value = "Update Task">
+
+
+    </form>
+
+
+</div>
+
+{% endblock %}

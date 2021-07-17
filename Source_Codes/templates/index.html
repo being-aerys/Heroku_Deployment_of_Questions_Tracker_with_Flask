@@ -1,0 +1,60 @@
+{% extends 'base_template.html' %}
+
+<!-- Head, inherits from base_template.html-->
+{% block head %}
+<title>Question Tracker</title>
+{% endblock %}
+
+<!-- Body, inherits from base_template.html-->
+{% block body %}
+<div class = "content">
+
+    <h1 style="text-align: center">Questions To Solve</h1>
+
+    {% if questions|length < 1 %}
+        <h4 style="text-align: center"> Question list is currently empty. Create a new entry.</h4>
+    {% else %}
+
+    <table>
+        <tr>
+            <th>Question</th>
+            <th>Date Added</th>
+            <th>Action</th>
+
+        </tr>
+
+        {% for question in questions %}
+
+
+            <tr>
+                <td>{{question.content}}</td>
+                <td>{{question.date_saved.date()}}</td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a href="/delete/{{question.id}}">Delete</a>
+                    <br>
+                    <a href="/update/{{question.id}}">Update</a>
+
+                </td>
+
+
+            </tr>
+        {%endfor%}
+
+    </table>
+
+    {%endif%}
+
+    <form action = "/" method="POST">
+
+        <input type = "text" name = "content" id = "content">
+        <input type = "submit" value = "Add Task">
+
+
+    </form>
+
+
+</div>
+
+{% endblock %}
